@@ -10,16 +10,18 @@ const Cars = require("../models/carSchema");
 //   next();
 // };
 
+router.get("/", async (req, res) => {
+  return res.json({ message: "Welcome to home pahe" });
+});
+
 // car details
 router.get("/cars/details", (req, res) => {
   const { carNumber, apiKey } = req.query;
   if (!(apiKey === "test5")) {
-    return res
-      .status(201)
-      .json({
-        message:
-          "please check api key 'http://localhost:5000/cars/details?apiKey=<>&carNumber=<>'",
-      });
+    return res.status(201).json({
+      message:
+        "please check api key 'http://localhost:5000/cars/details?apiKey=<>&carNumber=<>'",
+    });
   }
   Cars.findOne({ carNumber })
     .then((data) => {
