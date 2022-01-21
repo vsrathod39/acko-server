@@ -35,20 +35,23 @@ router.get("/car/pic", (req, res) => {
       message: "please check api key",
     });
   }
-  if (Object.keys(req.query).length === 0) {
+  if (company === undefined && model === undefined) {
+    console.log(company, model);
     CarPic.find()
       .then((data) => {
-        if (data === null) {
+        console.log(data.length);
+        if (data.length === 0) {
           return res.status(201).json({ message: "no data exist" });
         }
-        return res.status(201).json(data);
+        return res.status(200).json(data);
       })
       .catch((error) => {
         return res.status(500).json({ message: "please check route", error });
       });
   }
-  if (company && model) {
+  if (!(company === undefined) && !(model === undefined)) {
     CarPic.findOne({ $and: [{ company }, { model }] })
+      .collation({ locale: "en", strength: 2 })
       .then((data) => {
         if (data === null) {
           return res.status(201).json({ message: "car number does not exist" });
@@ -61,7 +64,11 @@ router.get("/car/pic", (req, res) => {
           .json({ message: "please check company name", error: error });
       });
   }
-  CarPic.find({ $or: [{ company }, { model }] })
+  CarPic.find({
+    $or: [{ company }, { model }],
+  })
+    .collation({ locale: "en", strength: 2 })
+
     .then((data) => {
       if (data === null) {
         return res.status(201).json({ message: "car number does not exist" });
