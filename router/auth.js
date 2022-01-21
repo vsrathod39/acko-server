@@ -29,8 +29,14 @@ router.get("/cars/details", (req, res) => {
 
 // cars pic and price value
 router.get("/car/pic", (req, res) => {
+  const { company, apiKey, model } = req.query;
+  if (!(apiKey === "test5")) {
+    return res.status(201).json({
+      message: "please check api key",
+    });
+  }
   if (Object.keys(req.query).length === 0) {
-    CarPic.find({})
+    CarPic.find()
       .then((data) => {
         if (data === null) {
           return res.status(201).json({ message: "no data exist" });
@@ -40,12 +46,6 @@ router.get("/car/pic", (req, res) => {
       .catch((error) => {
         return res.status(500).json({ message: "please check route", error });
       });
-  }
-  const { company, apiKey, model } = req.query;
-  if (!(apiKey === "test5")) {
-    return res.status(201).json({
-      message: "please check api key",
-    });
   }
   if (company && model) {
     CarPic.findOne({ $and: [{ company }, { model }] })
