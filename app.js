@@ -1,6 +1,4 @@
-// const dotenv = require("dotenv");
 const express = require("express");
-// dotenv.config({ path: "./config.env" });
 const bodyparser = require("body-parser");
 const cors = require("cors");
 
@@ -15,6 +13,7 @@ const userRegistrationRouter = require("./Routers/userRegistrationRouter");
 const carDetailsRouter = require("./Routers/carDetailsRouter");
 const carPicRouter = require("./Routers/carPicRouter");
 const paymentCheckoutRouter = require("./Routers/paymentCheckoutRouter");
+const home = require("./Routers/home");
 
 app.use("/", home);
 app.use("/signup", otpRouter);
