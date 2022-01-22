@@ -1,5 +1,5 @@
 // carPicController
-const CarPic = require("../models/carPicSchema");
+const CarPic = require("../Models/carPicSchema");
 
 // cars pic and price value
 module.exports.carPicController = (req, res) => {

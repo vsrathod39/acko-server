@@ -1,4 +1,4 @@
-const User = require("../models/userSchema");
+const User = require("../Models/userSchema");
 
 // user registration
 module.exports.userRegistration = (req, res) => {
