@@ -16,6 +16,7 @@ const carDetailsRouter = require("./Routers/carDetailsRouter");
 const carPicRouter = require("./Routers/carPicRouter");
 const paymentCheckoutRouter = require("./Routers/paymentCheckoutRouter");
 
+app.use("/", home);
 app.use("/signup", otpRouter);
 app.use("/user", userRegistrationRouter);
 app.use("/cars", carDetailsRouter);
