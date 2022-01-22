@@ -1,4 +1,6 @@
+// const dotenv = require("dotenv");
 const express = require("express");
+// dotenv.config({ path: "./config.env" });
 const bodyparser = require("body-parser");
 const cors = require("cors");
 
