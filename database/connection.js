@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
-const DB = process.env.DATABASE;
-
 mongoose
-  .connect(DB)
+  .connect(process.env.DATABASE)
   .then((res) => {
     console.log("Acko Database connected");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Acko Database connection failed");
   });

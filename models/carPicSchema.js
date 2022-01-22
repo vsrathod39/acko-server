@@ -5,6 +5,8 @@ const carPicSchema = new mongoose.Schema({
   model: { type: String, required: true },
   price: { type: String, required: true },
   image: { type: String, required: true },
+}< {
+  timestamps: true
 });
 
 const CarPic = mongoose.model("CARPIC", carPicSchema);
