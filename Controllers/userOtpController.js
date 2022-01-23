@@ -22,7 +22,7 @@ module.exports.genOtpController = async (req, res) => {
   const number = req.body.number;
   console.log(OTP);
   await axios.get(
-    `https://2factor.in/API/V1/${process.env.OTP_GATEWAY_KEY}/SMS/${number}/${OTP}`
+    `https://2factor.in/API/V1/${process.env.OTP_GATEWAY_KEY}/SMS/${number}/${OTP}/otpacko`
   );
   // .then((response) => {})
   // .catch((error) => {});
